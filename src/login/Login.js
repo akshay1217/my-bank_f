@@ -9,6 +9,15 @@ const Login = ({history}) => {
     const [isLoading, setLoading] = useState(true);
     const {isLoggedIn, setIsLoggedIn} = useContext(BankContext);
 
+    const CheckError =(response) => {
+        if (response.status >= 200 && response.status <= 299) {
+            setIsLoggedIn(true)
+          return response.json();
+        } else {
+          throw Error(response.statusText);
+        }
+      }
+
     const login = ()=>{
         if(password.length<=0 || email.length<=0){
             alert("Email or Password missing!")
@@ -23,11 +32,10 @@ const Login = ({history}) => {
                 password
             })
         })
-        .then((response) => response.json())
+        .then(CheckError)
         .then((res) => {
             localStorage.setItem("userId",res.userId)
             localStorage.setItem("token",res.token)
-            setIsLoggedIn(true)
             console.log(res)
             history.push('/payee')            
         })

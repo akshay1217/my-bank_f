@@ -12,6 +12,7 @@ export const BankProvider = ({children, history}) => {
     return (
         <BankContext.Provider
             value = {{
+                isLoggedIn : isLoggedIn,
                 setIsLoggedIn:setIsLoggedIn,
             }}
             >
