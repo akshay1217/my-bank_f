@@ -9,6 +9,12 @@ import FormControl from 'react-bootstrap/FormControl';
 export const BankProvider = ({children, history}) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if(localStorage.getItem('userId')){
+            setIsLoggedIn(true)
+        }
+    }, [])
     return (
         <BankContext.Provider
             value = {{

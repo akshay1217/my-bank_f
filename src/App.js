@@ -6,6 +6,7 @@ import Login from './login/Login.js';
 import Signup from './signup/Signup.js';
 import Payee from './payee/Payee.js';
 import HomePage from './home/HomePage.js';
+import AddPayee from './payee/AddPayee.js';
 
 import { BankProvider } from './contextProvider/BankProvider';
 
